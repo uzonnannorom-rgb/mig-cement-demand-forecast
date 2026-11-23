@@ -1,0 +1,22 @@
+# Data (not shared publicly)
+data/raw/
+*.db
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Virtual environment
+.venv/
+venv/
+
+# Editor and system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Old or backup files
+Old_app.py
+*_old.py
