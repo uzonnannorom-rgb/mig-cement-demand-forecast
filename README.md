@@ -49,14 +49,14 @@ mig-cement-demand-forecast/
 │   ├── 03_modelling.ipynb             # SARIMAX baseline vs AdaBoost
 │   ├── 04_feature_engineering_modelling.ipynb  # Engineered features and inventory simulation
 │   └── 05_scaling.ipynb               # Model and simulation for all 30 sites
-├── reports/
-│   ├── figures/                       # Charts and dashboard screenshots
+├── reports/                           # Charts, final report and presentation
 │   ├── MIG_Cement_Final_Report.pdf
 │   └── MIG_Cement_Presentation.pdf
 ├── src/
 │   ├── data_loader.py                 # SQL query and data loading
 │   ├── metrics.py                     # MAPE and RMSE
 │   └── pipeline.py                    # Features, AdaBoost forecast and inventory simulation
+├── Project_structure.py               # Creates the project folders
 ├── requirements.txt
 └── README.md
 ```
@@ -95,11 +95,13 @@ Test period: 28 May – 31 December 2024 (SITE_001).
 | AdaBoost, 3 inputs | 33.2% | 9.73 t |
 | **AdaBoost, engineered features** | **11.8%** | **4.04 t** |
 
-![Model comparison](reports/figures/model_comparison.png)
+![Model comparison](reports/model_comparison.png)
 
 Across **all 30 sites**, every site met the 15% target, with an **average MAPE of 9.3%** (range 3.2%–14.3%).
 
-![Forecast error by site](reports/figures/mape_by_site.png)
+*The 30-site run used a slightly simpler set of rolling features, so these scores may be a little optimistic; the SITE_001 result above is the more cautious figure.*
+
+![Forecast error by site](reports/mape_by_site.png)
 
 The most important features were planned pour (0.38), inventory gap (0.34) and rainfall (0.15). Past consumption and calendar features added almost nothing.
 
@@ -111,7 +113,7 @@ The most important features were planned pour (0.38), inventory gap (0.34) and r
 | Deliveries | 218 | **29** |
 | Average stock | 18.9 t (4% of silo) | 218.2 t (49% of silo) |
 
-![Inventory simulation](reports/figures/inventory_simulation_site001.png)
+![Inventory simulation](reports/inventory_simulation_site001.png)
 
 ## Dashboard
 
@@ -120,9 +122,9 @@ The Plotly Dash app has two pages:
 - **Network Overview (for planners):** KPIs for all 30 sites, silo fill with reorder alerts, past stockout vs overstock rates by behaviour, and an alerts table.
 - **Site View (for site managers):** stock forecast against silo capacity, reorder triggers, and recommended order dates, quantities and rain buffers.
 
-![Silo fill by site](reports/figures/silo_fill_by_site.png)
+![Silo fill by site](reports/silo_fill_by_site.png)
 
-![Past stockouts vs overstocking](reports/figures/stockouts_vs_overstocking.png)
+![Past stockouts vs overstocking](reports/stockouts_vs_overstocking.png)
 
 > The dashboard simulation uses planned, upgraded silo capacities (1,000–2,500 t per site).
 
